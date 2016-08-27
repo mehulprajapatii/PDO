@@ -15,6 +15,7 @@ http://php.net/manual/en/pdo.error-handling.php
 Connection Using PDO:
 Example #1 Create a PDO instance via driver invocation
 <?php
+
 /* Connect to a MySQL database using driver invocation */
 $dsn = 'mysql:dbname=testdb;host=127.0.0.1';
 $user = 'dbuser';
@@ -25,6 +26,7 @@ try {
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
 }
+
 
 ?>
 
