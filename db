@@ -1,0 +1,54 @@
+
+ $file = "supplier_logs/db/roe.json";
+$jsondata = file_get_contents($file);
+$data = json_decode($jsondata, true);
+
+foreach ($data as $key=>$val){
+	$sql="INSERT INTO daily_roe set";
+	foreach ($val as $k =>$v){
+	$sql .= " $k= '".$v."' ,";
+}
+$sql=rtrim($sql, ",");
+// echo $sql;exit;
+$otdbo->query($sql);
+}
+$str="IT_BASE_NOT_TALLY";
+if (strpos($str, 'INV') !== FALSE || strpos($str, 'CS') !== FALSE)
+{
+	echo 'Found it';
+}
+else
+{
+	echo 'Not found.';
+}
+ $file = "supplier_logs/db/inventory_room_class.json";
+$jsondata = file_get_contents($file);
+$data = json_decode($jsondata, true);
+// Temp_Func::dump($data);
+
+foreach ($data as $key=>$val){
+	$sql="INSERT INTO .`inventory_room_class`
+	(`id`,
+			`inventory_room_class`,
+			`status`
+	)
+	VALUES
+	('id',
+		'".$val['inventory_room_class']."',
+		'".$val['status']."'
+	)";
+//	$otdbo->query($sql);
+}
+$str="IT_BASE_NOT_TALLY";
+if (strpos($str, 'INV') !== FALSE || strpos($str, 'CS') !== FALSE)
+{
+	echo 'Found it';
+}
+else
+{
+	echo 'Not found.';
+}
+
+/\*(.|[\r\n])*?\*/   for removing comments
+^\s*\n  for removing blank lines
+//.*$   for single line comment
